@@ -130,7 +130,7 @@ const progressHeight = computed(
         </div>
 
         <!-- Center content -->
-        <div class="w-[800px] py-12 pl-16 flex-shrink-0">
+        <div class="flex-1 py-12 pl-16">
           <!-- Company badge -->
           <AnimatePresence mode="wait">
             <Motion
@@ -153,7 +153,7 @@ const progressHeight = computed(
           </AnimatePresence>
 
           <!-- Quote -->
-          <div class="relative mb-12 min-h-[320px] max-w-[750px]">
+          <div class="relative mb-12 min-h-[200px] max-w-[750px]">
             <AnimatePresence mode="wait">
               <Motion
                 v-if="current"
