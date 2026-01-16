@@ -1,12 +1,13 @@
 <template>
   <section id="about">
-    <h2>关于 观升 (Guansheng)</h2>
     <About3DCard />
+    <FriendsSay />
   </section>
 </template>
 
 <script setup>
 import About3DCard from './About3DCard.vue';
+import FriendsSay from './FriendsSay.vue';
 </script>
 
 <style scoped>

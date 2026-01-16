@@ -2,6 +2,7 @@
 import CardBody from '../../components/ui/card-3d/CardBody.vue';
 import CardContainer from '../../components/ui/card-3d/CardContainer.vue';
 import CardItem from '../../components/ui/card-3d/CardItem.vue';
+import FlipWords from '../../components/ui/flip-words/FlipWords.vue';
 
 interface Props {
   title?: {
@@ -95,58 +96,51 @@ const props = withDefaults(defineProps<Props>(), {
     <CardBody
       class="group/card relative h-auto w-fit rounded-xl border border-black/[0.1] bg-gray-50 p-6 sm:w-[30rem] dark:border-white/[0.2] dark:bg-black dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1]"
     >
+      <!-- Name Section -->
       <CardItem
         v-bind="props.title"
-        class="text-xl font-bold text-neutral-600 dark:text-white"
+        class="text-xl font-bold text-white-600 dark:text-white font-mono"
       >
-        My Name is Guan Sheng (Vks)
+        My Name is
+        <br />
+        <div class="mx-auto text-4xl font-normal text-white-600 dark:text-white-400">
+          <FlipWords
+            :words="['观升', 'Vks']"
+            :duration="2000"
+            class="!text-primary text-5xl font-bold"
+          />
+        </div>
+
       </CardItem>
+
+      <!-- Divider Line -->
+      <div class="my-4 h-px w-full bg-neutral-300 dark:bg-neutral-700"></div>
+
+      <!-- "I am a" header (left-aligned like "My Name is") -->
       <CardItem
-        as="p"
         v-bind="props.description"
-        class="mt-2 max-w-sm text-sm text-neutral-500 dark:text-neutral-300"
+        class="text-xl font-bold text-white-600 dark:text-white font-mono"
       >
-        **I am a**
-        <ul class="list-disc list-inside ml-4">
-          <li>Whuer</li>
-          <li>Alibaba Intern</li>
-          <li>Backend Developer</li>
-          <li>AI Software Developer</li>
-          <li>Photography Enthusiast (Beginner, but learning passionately!)</li>
-          <li>Calligraphy Lover</li>
-          <li>Gaming Enthusiast</li>
-        </ul>
+        I am a
       </CardItem>
+
+      <!-- Identity items (right-aligned, mono font, larger & whiter) -->
       <CardItem
-        v-bind="props.image"
-        class="mt-4 w-full"
+        v-bind="props.description"
+        class="mt-2 max-w-sm font-mono text-[22px] leading-relaxed"
       >
-        <!-- <img
-          src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=2560&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          height="1000"
-          width="1000"
-          class="h-60 w-full rounded-xl object-cover group-hover/card:shadow-xl"
-          alt="thumbnail"
-        /> -->
+        <div class="space-y-1.5">
+          <div class="text-neutral-700 dark:text-neutral-200">Whuer</div>
+          <div class="text-neutral-700 dark:text-neutral-200">Alibaba Intern</div>
+          <div class="text-neutral-700 dark:text-neutral-200">Backend Developer</div>
+          <div class="text-neutral-700 dark:text-neutral-200">AI Software Developer</div>
+          <div class="text-neutral-700 dark:text-neutral-200">Cat Lover</div>
+          <div class="text-neutral-700 dark:text-neutral-200">Photography Enthusiast</div>
+          <div class="text-neutral-700 dark:text-neutral-200">Calligraphy Lover</div>
+          <div class="text-neutral-700 dark:text-neutral-200">Gaming Enthusiast</div>
+          <div class="text-neutral-700 dark:text-neutral-200">Billiards Enthusiast</div>
+        </div>
       </CardItem>
-      <!-- <div class="mt-12 flex items-center justify-between">
-        <CardItem
-          v-bind="props.btnLeft"
-          as="a"
-          href="https://rahulv.dev"
-          target="__blank"
-          class="rounded-xl px-4 py-2 text-xs font-normal dark:text-white"
-        >
-          Visit →
-        </CardItem>
-        <CardItem
-          v-bind="props.btnRight"
-          as="button"
-          class="rounded-xl bg-black px-4 py-2 text-xs font-bold text-white dark:bg-white dark:text-black"
-        >
-          Get Started
-        </CardItem>
-      </div> -->
     </CardBody>
   </CardContainer>
 </template>
