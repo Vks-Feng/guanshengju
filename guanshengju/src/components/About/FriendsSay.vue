@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { C } from 'vue-router/dist/router-CWoNjPRp.mjs';
 import DesignTestimonials from '../ui/design-testimonials/DesignTestimonials.vue';
 
 const testimonials = [

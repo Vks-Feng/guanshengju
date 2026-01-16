@@ -2,14 +2,15 @@
 import About from '../components/About/About.vue';
 import Interests from '../components/Interests/Interests.vue';
 import Share from '../components/Share/Share.vue';
-import test from '@/components/About/test.vue';
+
 </script>
 
 <template>
-  <main>
     <About />
-    <Interests />
-    <Share />
+
+  <main>
+    <!-- <Interests />
+    <Share /> -->
   </main>
 </template>
 

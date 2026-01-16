@@ -1,17 +1,19 @@
 <template>
-  <section id="about">
+  <!-- <section id="about"> -->
     <About3DCard />
     <FriendsSay />
-  </section>
+    <LifeFlowChart />
+  <!-- </section> -->
 </template>
 
 <script setup>
 import About3DCard from './About3DCard.vue';
 import FriendsSay from './FriendsSay.vue';
+import LifeFlowChart from './LifeFlowChart.vue';
 </script>
 
 <style scoped>
-section {
+/* section {
   min-height: 100vh;
   padding: 2rem;
   display: flex;
@@ -19,5 +21,5 @@ section {
   justify-content: center;
   align-items: center;
   background-color: #f0f0f0;
-}
+} */
 </style>
