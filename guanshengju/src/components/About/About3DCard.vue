@@ -132,13 +132,9 @@ const props = withDefaults(defineProps<Props>(), {
         <div class="space-y-1.5">
           <div class="text-neutral-700 dark:text-neutral-200">Whuer</div>
           <div class="text-neutral-700 dark:text-neutral-200">Alibaba Intern</div>
-          <div class="text-neutral-700 dark:text-neutral-200">Backend Developer</div>
-          <div class="text-neutral-700 dark:text-neutral-200">AI Software Developer</div>
-          <div class="text-neutral-700 dark:text-neutral-200">Cat Lover</div>
+          <div class="text-neutral-700 dark:text-neutral-200">AI Software & Backend Developer</div>
           <div class="text-neutral-700 dark:text-neutral-200">Photography Enthusiast</div>
           <div class="text-neutral-700 dark:text-neutral-200">Calligraphy Lover</div>
-          <div class="text-neutral-700 dark:text-neutral-200">Gaming Enthusiast</div>
-          <div class="text-neutral-700 dark:text-neutral-200">Billiards Enthusiast</div>
         </div>
       </CardItem>
     </CardBody>

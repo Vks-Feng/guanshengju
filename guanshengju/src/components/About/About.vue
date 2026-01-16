@@ -1,15 +1,19 @@
 <template>
   <!-- <section id="about"> -->
-    <About3DCard />
+    <!-- <About3DCard />
     <FriendsSay />
-    <LifeFlowChart />
+    <LifeFlowChart /> -->
+    <!-- <OrbitBackground /> -->
+     <DecoratedIntroCard />
   <!-- </section> -->
 </template>
 
 <script setup>
 import About3DCard from './About3DCard.vue';
+import DecoratedIntroCard from './DecoratedIntroCard.vue';
 import FriendsSay from './FriendsSay.vue';
 import LifeFlowChart from './LifeFlowChart.vue';
+import OrbitBackground from './OrbitBackground.vue';
 </script>
 
 <style scoped>
