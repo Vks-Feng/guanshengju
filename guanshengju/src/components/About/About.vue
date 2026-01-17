@@ -1,10 +1,8 @@
 <template>
   <!-- <section id="about"> -->
-    <!-- <About3DCard />
+    <DecoratedIntroCard />
     <FriendsSay />
-    <LifeFlowChart /> -->
-    <!-- <OrbitBackground /> -->
-     <DecoratedIntroCard />
+    <LifeFlowChart />
   <!-- </section> -->
 </template>
 

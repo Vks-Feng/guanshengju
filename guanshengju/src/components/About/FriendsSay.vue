@@ -15,6 +15,18 @@ const testimonials = [
     company: "Dalian University of Technology"
   },
   {
+    quote: "云无心以出岫 鸟倦飞而知还",
+    author: "Wood",
+    role: " friend from university",
+    company: "Wuhan University"
+  },
+  {
+    quote: "EVER IN PERSUIT",
+    author: "把你一郭端了",
+    role: "friend from university",
+    company: "Wuhan University"
+  },
+  {
     quote: "冯佬，别卷了😭",
     author: "luckz",
     role: "friend from high school",
@@ -27,10 +39,10 @@ const testimonials = [
     company: "Wuhan University"
   },
   {
-    quote: "EVER IN PERSUIT",
-    author: "把你一郭端了",
-    role: "friend from university",
-    company: "Wuhan University"
+    quote: "早日p12然后送我一套大别墅",
+    author: "Ware Wu",
+    role: "friend from high school",
+    company: "Huazhong University of Science and Technology"
   },
   {
     quote: "收一下，要不看起来像吹牛",
@@ -42,13 +54,13 @@ const testimonials = [
     quote: "叫你带带我，你耳朵聋嘛",
     author: "pt座下大童子",
     role: "friend from Alibaba",
-    company: "Alibaba | University of Science and Technology of China"
+    company: "University of Science and Technology of China"
   },
   {
     quote: "很好吃，下次还来",
     author: "pt座下伍童子",
     role: "friend from Alibaba",
-    company: "Alibaba | Wuhan University"
+    company: "Wuhan University"
   }
 ];
 </script>
@@ -58,7 +70,7 @@ const testimonials = [
     <DesignTestimonials
       :testimonials="testimonials"
       title="Friends Say"
-      :duration="8000" 
+      :duration="3000" 
     />
   </div>
 </template>

@@ -13,9 +13,6 @@
 
   </section>
 
-  <!-- 其他组件 -->
-  <FriendsSay />
-  <LifeFlowChart />
 </template>
 
 <script setup>
