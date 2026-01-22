@@ -81,7 +81,7 @@ const icons = {
     
     <!-- 你的大头像 -->
     <Orbit :radius="cardHalfWidth + orbitConfig.outer" :duration="25" :delay="40">
-      <div class="p-1.5 bg-white dark:bg-neutral-800 rounded-full shadow-xl border border-neutral-200 overflow-hidden">
+      <div class="p-1.5 bg-background rounded-full shadow-xl border border-border overflow-hidden">
          <img :src="icons.avatar" class="size-40 rounded-full object-cover" />
       </div>
     </Orbit>

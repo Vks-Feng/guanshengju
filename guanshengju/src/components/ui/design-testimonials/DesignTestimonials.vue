@@ -109,7 +109,7 @@ const progressHeight = computed(
         >
           <Motion
             as="span"
-            class="text-muted-foreground font-mono text-xs tracking-widest uppercase"
+            class="text-muted-foreground font-mono text-4xl font-bold tracking-tighter uppercase"
             :style="{ writingMode: 'vertical-rl', textOrientation: 'mixed' }"
             :initial="{ opacity: 0 }"
             :animate="{ opacity: 1 }"

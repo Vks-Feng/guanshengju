@@ -4,34 +4,38 @@ import Dock from "@/components/ui/dock/Dock.vue";
 import DockIcon from "@/components/ui/dock/DockIcon.vue";
 import DockSeparator from "@/components/ui/dock/DockSeparator.vue";
 import { Icon } from "@iconify/vue";
+import { useDark } from "@vueuse/core";
+import { computed } from "vue";
 
-const links = [
+const isDark = useDark();
+
+const links = computed(() => [
   { 
     name: "GitHub", 
     icon: "mdi:github", 
     href: "https://github.com/Vks-Feng",
-    color: "#ffffff" // GitHub 在深色背景下通常用白色
+    color: isDark.value ? "#ffffff" : "#000000"
   },
   { 
     name: "Email", 
     icon: "mdi:email", 
     href: "mailto:vksfeng@outlook.com",
-    color: "#115EA3" // Google Blue
+    color: "#115EA3"
   },
   { type: "separator" },
   { 
     name: "小红书", 
     icon: "simple-icons:xiaohongshu", 
     href: "https://www.xiaohongshu.com/user/profile/64db806a00000000010133d8",
-    color: "#ff2442" // 小红书标志性红
+    color: "#ff2442"
   },
   { 
     name: "抖音", 
     icon: "simple-icons:tiktok", 
     href: "https://www.douyin.com/user/MS4wLjABAAAAnXADEX18Pae-FdSoLr1aOzZap4eGNpyzN9ss5vM90RO8rRNeclEzvcVQNTfcuiLr",
-    color: "#FFFFFF" // 抖音青色（或使用白色）
+    color: isDark.value ? "#ffffff" : "#000000"
   },
-];
+]);
 </script>
 
 <template>
@@ -40,7 +44,7 @@ const links = [
     <Dock 
       :magnification="60" 
       :distance="140" 
-      class="bg-white/5 dark:bg-zinc-900/50 border-white/10 backdrop-blur-xl shadow-2xl"
+      class="bg-white/10 dark:bg-zinc-900/50 border-black/5 dark:border-white/10 backdrop-blur-xl shadow-2xl"
     >
       <template v-for="(item, index) in links" :key="index">
         <!-- 分隔符颜色也调淡一点 -->

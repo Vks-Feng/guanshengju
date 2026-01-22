@@ -10,7 +10,7 @@
       <g class="axis-grid">
         <line v-for="tick in [20, 40, 60, 80]" :key="tick" 
           :x1="padding.left" :y1="yScale(tick)" :x2="width - padding.right" :y2="yScale(tick)" 
-          stroke="#f1f5f9" />
+          class="stroke-border opacity-30" />
         <text v-for="tick in [20, 40, 60, 80]" :key="'t'+tick" 
           :x="padding.left - 12" :y="yScale(tick)" class="axis-text" text-anchor="end">
           {{ tick }}%
@@ -44,9 +44,9 @@
 
       <!-- X轴 -->
       <g class="x-axis">
-        <line :x1="padding.left" :y1="height - padding.bottom" :x2="width - padding.right" :y2="height - padding.bottom" stroke="#cbd5e1" />
+        <line :x1="padding.left" :y1="height - padding.bottom" :x2="width - padding.right" :y2="height - padding.bottom" class="stroke-border" />
         <g v-for="age in [0, 5, 12, 18, 21]" :key="age" :transform="`translate(${xScale(age)}, ${height - padding.bottom})`">
-          <line y2="6" stroke="#cbd5e1" />
+          <line y2="6" class="stroke-border" />
           <text y="22" class="axis-text" text-anchor="middle">{{ age }}</text>
         </g>
         <text :x="(width - padding.left - padding.right)/2 + padding.left" :y="height - 5" class="axis-text" font-weight="600">Age</text>
@@ -77,6 +77,8 @@ const rawData = [
 // 调整 keys 顺序：Study 放底层，社交/游戏放中间，开枝散叶的兴趣放顶层
 const keys = ['study', 'game', 'social', 'coding', 'calligraphy', 'photo'];
 const keyMap = { study: '学习', game: '游戏', social: '社交', coding: 'Coding', calligraphy: '书法', photo: '摄影' };
+
+// 使用 CSS 变量或根据主题调整颜色可能会更好，但这里保持原样，仅修复背景和文字
 const colors = ['#bfdbfe', '#bae6fd', '#a7f3d0', '#a5f3fc', '#99f6e4', '#6ee7b7'];
 
 const xScale = d3.scaleLinear().domain([0, 21]).range([padding.left, width - padding.right]);
@@ -132,20 +134,22 @@ const dynamicLabels = computed(() => {
 <style scoped>
 .card-container {
   max-width: 850px;
-  background: white;
+  background: var(--card);
   border-radius: 2rem;
   padding: 2.5rem;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--border);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
-.title { font-size: 2.5rem; margin: 0; color: #1e293b; font-family: ui-serif, Georgia, serif; }
-.subtitle { color: #64748b; margin: 0.5rem 0 2rem 0; font-size: 1.1rem; }
+.title { font-size: 2.5rem; margin: 0; color: var(--foreground); font-family: ui-serif, Georgia, serif; }
+.subtitle { color: var(--muted-foreground); margin: 0.5rem 0 2rem 0; font-size: 1.1rem; }
 
 .chart-svg { width: 100%; height: auto; overflow: visible; }
 
 .area-path {
   transition: all 0.4s ease;
   cursor: pointer;
-  stroke: white;
+  stroke: var(--card);
   stroke-width: 0;
 }
 .area-path:hover {
@@ -158,13 +162,21 @@ const dynamicLabels = computed(() => {
 }
 
 .area-label {
-  fill: #334155;
+  fill: var(--foreground);
   font-weight: 600;
   text-anchor: middle;
   dominant-baseline: middle; /* 关键：确保文字垂直居中 */
-  text-shadow: 0 0 4px rgba(255, 255, 255, 0.6);
+  text-shadow: 0 0 4px var(--card);
   pointer-events: none;
 }
 
-.axis-text { font-size: 12px; fill: #94a3b8; }
+.axis-text { font-size: 12px; fill: var(--muted-foreground); }
+
+/* SVG elements theme support via classes */
+.stroke-border {
+  stroke: var(--border);
+}
+.stroke-border\/30 {
+  stroke: oklch(var(--border) / 0.3);
+}
 </style>
