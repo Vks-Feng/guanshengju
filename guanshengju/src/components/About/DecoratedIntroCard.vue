@@ -1,27 +1,24 @@
 <template>
-  <!-- 主容器 -->
-  <section class="relative flex min-h-screen w-full items-center justify-center overflow-hidden">
+  <!-- 主容器：严格限制为 100vh，防止内容溢出导致 LinkDock 被截断 -->
+  <section class="relative flex h-screen w-full flex-col items-center justify-start overflow-hidden bg-white dark:bg-black">
     
-    <!-- 1. 背景层 (Orbit) - 这里的 z-index 通常较低 -->
+    <!-- 1. 背景层 (Orbit) -->
     <OrbitBackground />
+    
+    <!-- 顶部占位：为导航栏预留空间，并稍微减小以提升整体重心 -->
+    <div class="h-16 shrink-0"></div>
 
     <!-- 2. 内容层 (3D Card) -->
-    <!-- z-10 确保卡片在轨道上方 -->
-    <div class="relative z-10 pointer-events-auto">
+    <!-- 使用 mt-[8vh] 手动提升卡片位置，改善“重心偏下”的感觉 -->
+    <div class="relative z-10 pointer-events-auto mt-[8vh]">
       <About3DCard />
     </div>
 
     <!-- 3. LinkDock 组件 -->
-    <!-- 我们用一个容器包裹它，确保它位于屏幕底部并居中 -->
-    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-50 pointer-events-auto">
+    <!-- 绝对定位在 100vh 容器的底部 -->
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-50 pointer-events-auto">
       <LinkDock />
-    </div>
-
-    <!-- 4. 主题切换按钮 -->
-    <div class="absolute top-8 right-8 z-50">
-      <ThemeToggle />
-    </div>
-    
+    </div>    
   </section>
 </template>
 
@@ -31,5 +28,4 @@ import FriendsSay from './FriendsSay.vue';
 import LifeFlowChart from './LifeFlowChart.vue';
 import OrbitBackground from './OrbitBackground.vue';
 import LinkDock from './LinkDock.vue'; 
-import ThemeToggle from '../ui/ThemeToggle.vue';
 </script>

@@ -1,9 +1,11 @@
 <template>
-  <section id="share">
-    <h2>My Sharings</h2>
-    <Blogs />
-    <Books />
-    <Videos />
+  <section id="share" class="min-h-screen pt-20 bg-white dark:bg-black">
+    <h2 class="text-4xl font-extrabold text-gray-900 dark:text-white text-center py-12">My Sharings</h2>
+    <div class="max-w-7xl mx-auto px-4">
+      <Blogs />
+      <Books />
+      <Videos />
+    </div>
   </section>
 </template>
 
@@ -15,12 +17,6 @@ import Videos from './Videos.vue';
 
 <style scoped>
 section {
-  min-height: 100vh;
-  padding: 2rem;
-  background-color: #d0d0d0;
-}
-h2 {
-  text-align: center;
-  margin-bottom: 2rem;
+  width: 100%;
 }
 </style>

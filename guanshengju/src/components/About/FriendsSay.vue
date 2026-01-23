@@ -9,7 +9,7 @@ const testimonials = [
     company: "Tsinghua University"
   },
   {
-    quote: "我们不要因为新鲜感放弃一个一直愿意陪着你的人 新鲜感是和旧人做新事，而不是和新人做旧事",
+    quote: "我们不要因为新鲜感放弃一个一直愿意陪着你的人 新新鲜感是和旧人做新事，而不是和新人做旧事",
     author: "经常喜欢姐姐的狗",
     role: " friend from high school",
     company: "Dalian University of Technology"
@@ -66,7 +66,7 @@ const testimonials = [
 </script>
 
 <template>
-  <div class="min-h-screen bg-background">
+  <div class="w-[84%] mx-auto bg-background py-20">
     <DesignTestimonials
       :testimonials="testimonials"
       title="Friends Say"

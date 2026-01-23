@@ -1,27 +1,26 @@
 <script setup>
+import Navbar from '../components/Nav/Navbar.vue';
 import About from '../components/About/About.vue';
 import Interests from '../components/Interests/Interests.vue';
 import Share from '../components/Share/Share.vue';
+import ToBeContinued from '../components/sections/ToBeContinued.vue';
 
 </script>
 
 <template>
-    <About />
-
-  <main>
-    <Interests />
-    <Share />
-  </main>
+  <div class="bg-white dark:bg-black min-h-screen text-black dark:text-white transition-colors duration-300">
+    <Navbar />
+    <main>
+      <About />
+      <Interests />
+      <!-- <Share /> -->
+      <ToBeContinued />
+    </main>
+  </div>
 </template>
 
 <style scoped>
 main {
-  scroll-snap-type: y mandatory;
-  overflow-y: scroll;
-  height: 100vh;
-}
-main > section {
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
+  width: 100%;
 }
 </style>

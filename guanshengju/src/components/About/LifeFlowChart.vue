@@ -2,7 +2,7 @@
   <div class="card-container mx-auto">
     <div class="header">
       <h2 class="title">LifeFlow</h2>
-      <p class="subtitle">早年的时间几乎只指向一个方向。<br>随着世界被打开，兴趣开始生长，时间也不再只有一种去处......</p>
+      <p class="subtitle">In my early years, time seemed to flow in only one direction.<br/>But as the world unfolds, new interests begin to sprout, and time is no longer bound to a single destination..</p>
     </div>
 
     <svg :viewBox="`0 0 ${width} ${height}`" class="chart-svg">
@@ -76,7 +76,7 @@ const rawData = [
 
 // 调整 keys 顺序：Study 放底层，社交/游戏放中间，开枝散叶的兴趣放顶层
 const keys = ['study', 'game', 'social', 'coding', 'calligraphy', 'photo'];
-const keyMap = { study: '学习', game: '游戏', social: '社交', coding: 'Coding', calligraphy: '书法', photo: '摄影' };
+const keyMap = { study: 'study', game: 'game', social: 'social', coding: 'Coding', calligraphy: 'calligraphy', photo: 'photography' };
 
 // 使用 CSS 变量或根据主题调整颜色可能会更好，但这里保持原样，仅修复背景和文字
 const colors = ['#bfdbfe', '#bae6fd', '#a7f3d0', '#a5f3fc', '#99f6e4', '#6ee7b7'];
@@ -133,8 +133,9 @@ const dynamicLabels = computed(() => {
 
 <style scoped>
 .card-container {
-  max-width: 850px;
-  background: var(--card);
+  width: 78%;
+  max-width: 1000px;
+  margin: 4rem auto;
   border-radius: 2rem;
   padding: 2.5rem;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08);

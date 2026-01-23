@@ -1,8 +1,8 @@
 <template>
-  <section id="interests" class="bg-gray-50 dark:bg-neutral-900 border-t border-gray-200 dark:border-neutral-800">
+  <section id="interests" class="min-h-screen pt-20 bg-gray-50 dark:bg-neutral-900 border-t border-gray-200 dark:border-neutral-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <h2 class="text-4xl font-extrabold text-gray-900 dark:text-white text-center py-12">
-        我的兴趣爱好
+        My Interests
       </h2>
       <div class="space-y-24 pb-24">
         <Photography />

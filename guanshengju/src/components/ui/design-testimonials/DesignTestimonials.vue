@@ -73,11 +73,11 @@ const progressHeight = computed(
 
 <template>
   <div
-    class="bg-background flex min-h-screen items-center justify-center overflow-hidden"
+    class="bg-background w-full overflow-hidden"
   >
     <div
       ref="containerRef"
-      class="relative w-full max-w-5xl"
+      class="relative w-full mx-auto"
       @mousemove="handleMouseMove"
     >
       <!-- Oversized index number -->
@@ -153,13 +153,13 @@ const progressHeight = computed(
           </AnimatePresence>
 
           <!-- Quote -->
-          <div class="relative mb-12 min-h-[200px] max-w-[750px]">
+          <div class="relative mb-12 min-h-[200px] w-full">
             <AnimatePresence mode="wait">
               <Motion
                 v-if="current"
                 :key="activeIndex"
                 as="blockquote"
-                class="text-foreground text-4xl leading-[1.15] font-light tracking-tight md:text-5xl"
+                class="text-foreground text-4xl leading-[1.15] font-light tracking-tight md:text-5xl w-full"
                 initial="hidden"
                 animate="visible"
                 exit="exit"
