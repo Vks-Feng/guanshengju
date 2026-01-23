@@ -1,10 +1,17 @@
 <template>
-  <section id="interests">
-    <h2>My Interests</h2>
-    <Photography />
-    <Calligraphy />
-    <Games />
-    <Music />
+  <section id="interests" class="bg-gray-50 dark:bg-neutral-900 border-t border-gray-200 dark:border-neutral-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-4xl font-extrabold text-gray-900 dark:text-white text-center py-12">
+        我的兴趣爱好
+      </h2>
+      <div class="space-y-24 pb-24">
+        <Photography />
+        <!-- 其他兴趣模块可以根据需要启用 -->
+        <!-- <Calligraphy /> -->
+        <!-- <Games /> -->
+        <!-- <Music /> -->
+      </div>
+    </div>
   </section>
 </template>
 
@@ -18,11 +25,5 @@ import Music from './Music.vue';
 <style scoped>
 section {
   min-height: 100vh;
-  padding: 2rem;
-  background-color: #e0e0e0;
-}
-h2 {
-  text-align: center;
-  margin-bottom: 2rem;
 }
 </style>

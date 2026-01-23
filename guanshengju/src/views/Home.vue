@@ -9,8 +9,8 @@ import Share from '../components/Share/Share.vue';
     <About />
 
   <main>
-    <!-- <Interests />
-    <Share /> -->
+    <Interests />
+    <Share />
   </main>
 </template>
 

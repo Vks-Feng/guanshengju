@@ -1,6 +1,10 @@
+<script setup>
+import PhotographyMarquee from './PhotographyMarquee.vue';
+</script>
+
 <template>
-  <div>
-    <h3>Photography</h3>
-    <p>Showcase your photography work here.</p>
+  <div class="photography-section py-8">
+    <h3 class="text-2xl font-bold mb-6 px-4">摄影作品</h3>
+    <PhotographyMarquee />
   </div>
 </template>
