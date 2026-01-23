@@ -2,41 +2,48 @@
 
 import { ref, inject, watch } from "vue";
 
-const {
-  as = "div",
-  translateX = 0,
-  translateY = 0,
-  translateZ = 0,
-  rotateX = 0,
-  rotateY = 0,
-  rotateZ = 0,
-  ...props
-} = defineProps({
+const props = defineProps({
   as: { type: String, required: false, default: "div" },
   class: { type: String, required: false },
-  translateX: { type: Number, required: false, default: 0 },
-  translateY: { type: Number, required: false, default: 0 },
-  translateZ: { type: Number, required: false, default: 0 },
-  rotateX: { type: Number, required: false, default: 0 },
-  rotateY: { type: Number, required: false, default: 0 },
-  rotateZ: { type: Number, required: false, default: 0 },
+  translateX: { type: [Number, String], required: false, default: 0 },
+  translateY: { type: [Number, String], required: false, default: 0 },
+  translateZ: { type: [Number, String], required: false, default: 0 },
+  rotateX: { type: [Number, String], required: false, default: 0 },
+  rotateY: { type: [Number, String], required: false, default: 0 },
+  rotateZ: { type: [Number, String], required: false, default: 0 },
 });
 
 const refElement = ref(null);
 
 const mouseState = inject("use3DCardMouseState");
 
-function handleAnimation(isMouseEntered) {
+function handleAnimation() {
   if (!refElement.value) return;
 
-  if (isMouseEntered) {
-    refElement.value.style.transform = `translateX(${translateX}px) translateY(${translateY}px) translateZ(${translateZ}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) rotateZ(${rotateZ}deg)`;
+  if (mouseState.isMouseEntered.value) {
+    refElement.value.style.transform = `translateX(${props.translateX}px) translateY(${props.translateY}px) translateZ(${props.translateZ}px) rotateX(${props.rotateX}deg) rotateY(${props.rotateY}deg) rotateZ(${props.rotateZ}deg)`;
   } else {
     refElement.value.style.transform = `translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg)`;
   }
 }
 
-watch(mouseState.isMouseEntered, handleAnimation, { immediate: true });
+// Watch mouse state, transformation props, and the element ref itself
+watch(
+  [
+    () => mouseState.isMouseEntered.value,
+    () => props.translateX,
+    () => props.translateY,
+    () => props.translateZ,
+    () => props.rotateX,
+    () => props.rotateY,
+    () => props.rotateZ,
+    refElement,
+  ],
+  () => {
+    handleAnimation();
+  },
+  { immediate: true },
+);
 </script>
 
 <template>

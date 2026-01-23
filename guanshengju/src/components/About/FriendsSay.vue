@@ -66,7 +66,7 @@ const testimonials = [
 </script>
 
 <template>
-  <div class="w-[84%] mx-auto bg-background py-20">
+  <div class="w-[72%] mx-auto bg-background py-20">
     <DesignTestimonials
       :testimonials="testimonials"
       title="Friends Say"

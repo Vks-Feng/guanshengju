@@ -16,6 +16,7 @@ const identities = [
 
 // 悬浮状态管理
 const hoveredIndex = ref<number | null>(null);
+const isNameHovered = ref(false);
 </script>
 
 <template>
@@ -29,7 +30,7 @@ const hoveredIndex = ref<number | null>(null);
       <div class="absolute -left-2 -bottom-2 h-12 w-12 rounded-full bg-neutral-500/10 blur-xl group-hover/card:bg-neutral-500/20 transition-all duration-500" />
 
       <!-- 第一部分：名字 -->
-      <div class="flex flex-col items-start w-full">
+      <div class="flex flex-col items-start w-full" style="transform-style: preserve-3d;">
         <CardItem
           :translate-z="20"
           class="text-sm font-bold text-muted-foreground font-mono"
@@ -39,10 +40,12 @@ const hoveredIndex = ref<number | null>(null);
 
         <!-- 名字居中：利用 w-full + text-center -->
         <CardItem
-          :translate-z="80"
+          :translate-z="isNameHovered ? 120 : 70"
           class="w-full py-8 text-center"
+          @mouseenter="isNameHovered = true"
+          @mouseleave="isNameHovered = false"
         >
-          <div class="text-5xl sm:text-6xl font-black tracking-tighter">
+          <div class="text-5xl sm:text-6xl font-black tracking-tighter transition-all duration-500" :class="{ 'scale-110': isNameHovered }">
             <FlipWords
               :words="['观升', 'Vks']"
               :duration="3000"
@@ -53,34 +56,34 @@ const hoveredIndex = ref<number | null>(null);
       </div>
 
       <!-- 分割线 -->
-      <CardItem :translate-z="30" class="w-full h-px bg-gradient-to-r from-transparent via-border to-transparent my-2" />
+      <CardItem :translate-z="40" class="w-full h-px bg-gradient-to-r from-transparent via-border to-transparent my-4" />
 
       <!-- 第二部分：身份 -->
-      <div class="mt-6 flex flex-col w-full">
+      <div class="mt-6 flex flex-col w-full" style="transform-style: preserve-3d;">
         <CardItem
-          :translate-z="20"
+          :translate-z="30"
           class="text-sm font-bold text-muted-foreground font-mono"
         >
           I am a:
         </CardItem>
 
         <!-- 身份列表：右对齐 (items-end) -->
-        <div class="mt-4 space-y-2 flex flex-col items-end w-full">
+        <div class="mt-4 space-y-2 flex flex-col items-end w-full" style="transform-style: preserve-3d;">
           <CardItem
             v-for="(item, index) in identities"
             :key="index"
-            :translate-z="40"
-            class="transition-all duration-300 ease-in-out cursor-default"
-            :class="hoveredIndex !== null && hoveredIndex !== index 
-                ? 'opacity-20 blur-[1px] scale-95' 
-                : 'opacity-100 scale-100'"
+            :translate-z="hoveredIndex === index ? 90 : 50"
+            class="cursor-default"
             @mouseenter="hoveredIndex = index"
             @mouseleave="hoveredIndex = null"
           >
             <!-- 移除橙色悬浮，保持黑白基调 -->
             <span 
-              class="text-xl sm:text-2xl font-mono font-bold text-foreground transition-all duration-300"
-              :class="{ 'scale-110 !opacity-100': hoveredIndex === index }"
+              class="text-xl sm:text-2xl font-mono font-bold text-foreground transition-all duration-300 inline-block"
+              :class="[
+                hoveredIndex === index ? 'scale-110 opacity-100' : '',
+                hoveredIndex !== null && hoveredIndex !== index ? 'opacity-20 blur-[1px] scale-95' : 'opacity-100 scale-100'
+              ]"
             >
               {{ item }}
             </span>
