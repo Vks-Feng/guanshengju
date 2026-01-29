@@ -13,7 +13,7 @@ import ToBeContinued from '../components/sections/ToBeContinued.vue';
     <main>
       <About />
       <Interests />
-      <!-- <Share /> -->
+      <Share />
       <ToBeContinued />
     </main>
   </div>

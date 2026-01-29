@@ -1,7 +1,7 @@
 <template>
   <section id="about" class="min-h-screen flex flex-col items-stretch">
     <DecoratedIntroCard class="w-full" />
-    <FriendsSay class="w-full flex justify-center" />
+    <FriendsSay class="flex justify-center" />
     <LifeFlowChart class="w-full" />
   </section>
 </template>
