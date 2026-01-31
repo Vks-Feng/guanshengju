@@ -8,8 +8,8 @@
 
     <div ref="content" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24 pb-24 opacity-0 translate-y-20">
       <Photography />
+      <Calligraphy />
       <!-- 其他兴趣模块可以根据需要启用 -->
-      <!-- <Calligraphy /> -->
       <!-- <Games /> -->
       <!-- <Music /> -->
     </div>

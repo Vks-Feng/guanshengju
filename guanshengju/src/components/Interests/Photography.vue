@@ -3,9 +3,13 @@ import PhotographyMarquee from './PhotographyMarquee.vue';
 </script>
 
 <template>
-  <div class="photography-section py-8">
-    <h3 class="text-2xl font-bold mb-6 px-4">Photography</h3>
-    <p>See more of my shots on Rednote and Douyin</p>
+  <div class="space-y-4">
+    <div class="flex flex-col space-y-2">
+      <h2 class="text-3xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100">Photography</h2>
+      <p class="text-neutral-500 dark:text-neutral-400 max-w-2xl">
+        I'm a photography beginner, but I’ve been obsessed since I first picked up a camera. I look forward to continuously improving my skills. If you're interested, you can find more of my work on Xiaohongshu or Douyin.
+      </p>
+    </div>
     <PhotographyMarquee />
   </div>
 </template>
