@@ -50,7 +50,7 @@ const testimonials = [
   {
     quote: "很好吃，下次还来",
     name: "pt座下伍童子",
-    designation: "friend from Alibaba @ Wuhan University"
+    designation: "friend from University @ Wuhan University"
   }
 ];
 </script>

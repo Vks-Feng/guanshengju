@@ -112,48 +112,52 @@ export async function generateForegroundTexture(data, renderer) {
   ctx.strokeStyle = "rgba(60, 60, 60, 1)";
   ctx.lineWidth = 1;
 
-  // Card background and border (transparent for foreground to show background)
+  // --- 文字展示开关：如需恢复文字，请取消下面代码的注释，并调整 topElementsMaxY 和 bottomReservedSpace ---
+
+  /*
+  // 1. Draw border
   ctx.beginPath();
   ctx.rect(0, 0, cardWidth, cardHeight);
-  ctx.stroke(); // Draw border
-  // ctx.fill() is not needed as background is transparent
+  ctx.stroke();
 
   let currentY = padding;
 
-  // Title Text
+  // 2. Title Text
   ctx.font = "24px Arial, sans-serif";
   ctx.fillStyle = "white";
   ctx.textBaseline = "top";
 
-  // Measure text to determine actual width
   const titleText = data.title;
   const titleMaxWidth = cardWidth - padding * 2;
 
-  // For `ellipsis` and `wrap: 'none'`, we need to manually truncate
   let truncatedTitle = titleText;
   let textMetrics = ctx.measureText(truncatedTitle);
 
-  // Simple truncation if text exceeds maxWidth
   while (textMetrics.width > titleMaxWidth && truncatedTitle.length > 3) {
     truncatedTitle = `${truncatedTitle.substring(0, truncatedTitle.length - 4)}...`;
     textMetrics = ctx.measureText(truncatedTitle);
   }
   ctx.fillText(truncatedTitle, padding, currentY);
 
-  const headerHeight = 24; // Assuming 24px font height is a good approximation for header height
+  const headerHeight = 24;
+  currentY += headerHeight + 30;
+  */
 
-  currentY += headerHeight + 30; // Move Y cursor down
+  // --- 图片布局设置 ---
+  // 当不显示文字时：
+  const topElementsMaxY = padding;
+  const bottomReservedSpace = padding;
 
-  const topElementsMaxY = currentY;
-  const bottomReservedSpace = 100;
-  const availableImageHeight =
-    cardHeight - topElementsMaxY - bottomReservedSpace;
+  // 当显示文字时（请恢复下面的值）：
+  // const topElementsMaxY = currentY; // 需要定义上面的 currentY
+  // const bottomReservedSpace = 100;
+
+  const availableImageHeight = cardHeight - topElementsMaxY - bottomReservedSpace;
   const availableImageWidth = cardWidth - padding * 2;
 
-  // Image Loading and Placement
   const imageObj = new Image();
   imageObj.crossOrigin = "anonymous";
-  imageObj.src = data.image || "/photo.png"; // Fallback image
+  imageObj.src = data.image || "/photo.png";
 
   const loadImagePromise = new Promise((resolve) => {
     imageObj.onload = () => {
@@ -161,7 +165,6 @@ export async function generateForegroundTexture(data, renderer) {
       let imgHeight = imageObj.naturalHeight;
       const naturalAspectRatio = imgWidth / imgHeight;
 
-      // Scale image to fit within available space, maintaining aspect ratio
       if (imgWidth > availableImageWidth || imgHeight > availableImageHeight) {
         if (availableImageWidth / naturalAspectRatio <= availableImageHeight) {
           imgWidth = availableImageWidth;
@@ -175,75 +178,58 @@ export async function generateForegroundTexture(data, renderer) {
       const imageX = padding + (availableImageWidth - imgWidth) / 2;
       const imageY = topElementsMaxY + (availableImageHeight - imgHeight) / 2;
 
-      // Draw image (no direct cornerRadius for images in vanilla canvas,
-      // you'd need to clip the path if truly desired. For simplicity, we draw directly).
       ctx.drawImage(imageObj, imageX, imageY, imgWidth, imgHeight);
       resolve();
     };
 
     imageObj.onerror = () => {
-      console.error("Failed to load foreground image:", imageObj.src);
-      // Placeholder text on image load error
       ctx.fillStyle = "gray";
       ctx.font = "30px Arial";
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
-      ctx.fillText("Image Error", cardWidth / 2, cardHeight / 2 - 50);
-      resolve(); // Resolve to allow card generation to continue
+      ctx.fillText("Image Error", cardWidth / 2, cardHeight / 2);
+      resolve();
     };
   });
 
-  await loadImagePromise; // Wait for the image to load or fail
+  await loadImagePromise;
 
-  // Tags
+  /*
+  // 3. Tags
   let currentXForTags = padding;
   const tagFontSize = 16;
   const tagPaddingX = 15;
   const tagPaddingY = 8;
   const tagGap = 10;
-
   const tagsY = cardHeight - padding - tagFontSize - tagPaddingY;
+
   data.tags.forEach((tagText) => {
     ctx.font = `${tagFontSize}px Helvetica, Arial, sans-serif`;
-    ctx.textBaseline = "middle"; // Align text vertically in the middle of the shape
+    ctx.textBaseline = "middle";
 
     const textToDraw = `#${tagText.toUpperCase()}`;
-    const textMetrics = ctx.measureText(textToDraw);
-    const tagLabelWidth = textMetrics.width;
-
+    const tagLabelWidth = ctx.measureText(textToDraw).width;
     const tagShapeWidth = tagLabelWidth + tagPaddingX;
     const tagShapeHeight = tagFontSize + tagPaddingY;
 
-    // Draw rounded rectangle for tag shape
     ctx.fillStyle = "rgba(248,250, 252, 0.15)";
-    drawRoundedRect(
-      ctx,
-      currentXForTags,
-      tagsY,
-      tagShapeWidth,
-      tagShapeHeight,
-      tagShapeHeight / 2,
-    ); // Use half height for perfect pill shape
+    drawRoundedRect(ctx, currentXForTags, tagsY, tagShapeWidth, tagShapeHeight, tagShapeHeight / 2);
     ctx.fill();
 
-    // Draw tag text
     ctx.fillStyle = "white";
     ctx.textAlign = "center";
-    ctx.fillText(
-      textToDraw,
-      currentXForTags + tagShapeWidth / 2,
-      tagsY + tagShapeHeight / 2,
-    ); // Center text in shape
+    ctx.fillText(textToDraw, currentXForTags + tagShapeWidth / 2, tagsY + tagShapeHeight / 2);
 
     currentXForTags += tagShapeWidth + tagGap;
   });
 
-  // Date
+  // 4. Date
   ctx.font = "20px Arial, sans-serif";
   ctx.fillStyle = "rgba(255, 255, 255, 1)";
-  ctx.textAlign = "right"; // Align text to the right
-  ctx.textBaseline = "bottom"; // Align text to the bottom of its bounding box
+  ctx.textAlign = "right";
+  ctx.textBaseline = "bottom";
   ctx.fillText(data.date, cardWidth - padding, cardHeight - padding);
+  */
 
   const texture = new Texture(renderer.gl, {
     image: canvas,

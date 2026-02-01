@@ -59,7 +59,7 @@ const testimonials = [
   {
     quote: "很好吃，下次还来",
     author: "pt座下伍童子",
-    role: "friend from Alibaba",
+    role: "friend from university",
     company: "Wuhan University"
   }
 ];

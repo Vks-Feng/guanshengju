@@ -114,7 +114,7 @@ export class EventHandler {
     // Check if movement is significant enough to disable click
     const movementDistance = Math.sqrt(
       (clientX - this.host.startPosition.x) ** 2 +
-        (clientY - this.host.startPosition.y) ** 2,
+      (clientY - this.host.startPosition.y) ** 2,
     );
 
     if (movementDistance > this.host.maxClickMovement) {
@@ -333,6 +333,7 @@ export class EventHandler {
 
         this.host.container.dispatchEvent(customEvent);
 
+        /*
         // Log for debugging
         window.alert(
           `Tile clicked: ${JSON.stringify({
@@ -341,6 +342,7 @@ export class EventHandler {
             tileIndex: userData.tileIndex,
           })}`,
         );
+        */
       }
     }
   }
