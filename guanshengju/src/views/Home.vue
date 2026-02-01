@@ -4,6 +4,7 @@ import About from '../components/About/About.vue';
 import Interests from '../components/Interests/Interests.vue';
 import Share from '../components/Share/Share.vue';
 import ToBeContinued from '../components/sections/ToBeContinued.vue';
+import MobileNotice from '../components/ui/MobileNotice.vue';
 
 </script>
 
@@ -11,6 +12,7 @@ import ToBeContinued from '../components/sections/ToBeContinued.vue';
   <div class="bg-white dark:bg-black min-h-screen text-black dark:text-white transition-colors duration-300">
     <Navbar />
     <main>
+      <MobileNotice />
       <About />
       <Interests />
       <Share />
