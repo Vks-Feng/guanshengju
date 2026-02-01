@@ -133,8 +133,8 @@ const dynamicLabels = computed(() => {
 
 <style scoped>
 .card-container {
-  width: 78%;
-  max-width: 1000px;
+  flex: 1.5;
+  min-width: 300px;
   margin: 4rem auto;
   border-radius: 2rem;
   padding: 2.5rem;

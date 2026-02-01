@@ -69,6 +69,15 @@ const paddedIndex = computed(() =>
 const progressHeight = computed(
   () => `${((activeIndex.value + 1) / testimonials.length) * 100}%`,
 );
+
+// 使用函数而不是计算属性，避免缓存问题
+function getWords(index) {
+  const currentItem = testimonials[index];
+  if (!currentItem) return [];
+  const text = currentItem.quote;
+  const hasChinese = /[\u4e00-\u9fa5]/.test(text);
+  return hasChinese ? text.split("") : text.split(" ");
+}
 </script>
 
 <template>
@@ -77,13 +86,13 @@ const progressHeight = computed(
   >
     <div
       ref="containerRef"
-      class="relative w-full mx-auto"
+      class="relative w-full max-w-5xl"
       @mousemove="handleMouseMove"
     >
       <!-- Oversized index number -->
       <Motion
         as="div"
-        class="text-foreground opacity-[0.06] pointer-events-none absolute top--[38%] -left-8 z-0 -translate-y-1/2 text-[28rem] leading-none font-bold tracking-tighter select-none"
+        class="text-foreground opacity-[0.03] pointer-events-none absolute top-[0%] left-0 z-0 text-[25rem] leading-none font-bold tracking-tighter select-none"
         :style="{ x: numberX, y: numberY }"
       >
         <AnimatePresence mode="wait">
@@ -102,14 +111,14 @@ const progressHeight = computed(
       </Motion>
 
       <!-- Main content -->
-      <div class="relative z-10 flex">
+      <div class="relative flex">
         <!-- Left column -->
         <div
           class="border-border flex flex-col items-center justify-center border-r pr-16"
         >
           <Motion
             as="span"
-            class="text-muted-foreground font-mono text-4xl font-bold tracking-tighter uppercase"
+            class="text-muted-foreground font-mono text-xs tracking-widest uppercase"
             :style="{ writingMode: 'vertical-rl', textOrientation: 'mixed' }"
             :initial="{ opacity: 0 }"
             :animate="{ opacity: 1 }"
@@ -153,38 +162,44 @@ const progressHeight = computed(
           </AnimatePresence>
 
           <!-- Quote -->
-          <div class="relative mb-12 min-h-[200px] w-full">
+          <div class="relative mb-12 min-h-[150px] w-full">
             <AnimatePresence mode="wait">
               <Motion
                 v-if="current"
-                :key="activeIndex"
+                :key="`quote-${activeIndex}`"
                 as="blockquote"
-                class="text-foreground text-4xl leading-[1.15] font-light tracking-tight md:text-5xl w-full"
-                initial="hidden"
-                animate="visible"
-                exit="exit"
+                class="text-foreground text-3xl leading-[1.15] font-light tracking-tight md:text-5xl w-full"
+                :variants="{
+                  hidden: { opacity: 1 },
+                  visible: { opacity: 1 },
+                  exit: { opacity: 1 }
+                }"
+                :initial="'hidden'"
+                :animate="'visible'"
+                :exit="'exit'"
               >
                 <Motion
-                  v-for="(word, i) in current.quote.split(' ')"
-                  :key="`${activeIndex}-${i}`"
+                  v-for="(word, i) in /[\u4e00-\u9fa5]/.test(current.quote) ? current.quote.split('') : current.quote.split(' ')"
+                  :key="`${activeIndex}-word-${i}-${word}`"
                   as="span"
-                  class="mr-[0.3em] inline-block"
+                  class="inline-block"
+                  :class="{ 'mr-[0.3em]': !/[\u4e00-\u9fa5]/.test(current.quote) }"
                   :variants="{
-                    hidden: { opacity: 0, y: 20, rotateX: 90 },
+                    hidden: { opacity: 0, y: 15, rotateX: 45 },
                     visible: {
                       opacity: 1,
                       y: 0,
                       rotateX: 0,
                       transition: {
-                        duration: 0.5,
-                        delay: i * 0.05,
+                        duration: 0.4,
+                        delay: i * 0.03,
                         ease: [0.22, 1, 0.36, 1],
                       },
                     },
                     exit: {
                       opacity: 0,
                       y: -10,
-                      transition: { duration: 0.2, delay: i * 0.02 },
+                      transition: { duration: 0.15, delay: i * 0.01 },
                     },
                   }"
                 >
@@ -292,7 +307,7 @@ const progressHeight = computed(
 
       <!-- Bottom ticker -->
       <div
-        class="pointer-events-none absolute right-0 -bottom-20 left-0 overflow-hidden opacity-[0.08]"
+        class="pointer-events-none absolute right-0 bottom-0 left-0 overflow-hidden opacity-[0.05] z-0"
       >
         <Motion
           as="div"
