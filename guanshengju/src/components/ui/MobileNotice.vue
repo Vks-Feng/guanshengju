@@ -34,7 +34,7 @@ onUnmounted(() => {
         <div class="text-group">
           <h2 class="title">Recommended</h2>
           <p class="description">
-            For the best experience, please visit us on a desktop.
+            For the best experience, please visit on a desktop.
           </p>
         </div>
       </div>
