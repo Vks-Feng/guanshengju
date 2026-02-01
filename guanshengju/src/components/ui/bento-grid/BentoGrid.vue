@@ -6,7 +6,7 @@ const props = defineProps({
 
 <template>
   <div
-    class="mx-auto grid max-w-7xl grid-cols-1 gap-4 md:auto-rows-[18rem] md:grid-cols-3"
+    class="mx-auto grid max-w-7xl grid-cols-1 gap-4 md:auto-rows-[minmax(18rem,auto)] md:grid-cols-3"
     :class="[props.class]"
   >
     <slot />

@@ -94,7 +94,7 @@ const mediaItems = [
         <BentoGridItem
           v-for="(item, index) in mediaItems"
           :key="index"
-          :class="['p-0 overflow-hidden border-none bg-transparent hover:shadow-none flex items-center justify-center', item.class]"
+          :class="['p-[1px] border-none bg-transparent hover:shadow-none flex items-center justify-center', item.class]"
         >
           <template #header>
             <!-- Adjusted classes: removed h-full from FlipCard and added items-center to parent in BentoGridItem -->
