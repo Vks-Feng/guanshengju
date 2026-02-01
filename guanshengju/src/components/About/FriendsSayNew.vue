@@ -18,6 +18,11 @@ const testimonials = [
     designation: "friend from university @ Wuhan University"
   },
   {
+    quote: "穿拖鞋爬山的目标不是为了登顶（狗头",
+    name: "北郊HH",
+    designation: "friend from university @ Wuhan University"
+  },
+  {
     quote: "EVER IN PERSUIT",
     name: "把你一郭端了",
     designation: "friend from university @ Wuhan University"

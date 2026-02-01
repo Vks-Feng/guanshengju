@@ -21,6 +21,12 @@ const testimonials = [
     company: "Wuhan University"
   },
   {
+    quote: "穿拖鞋爬山的目标不是为了登顶（狗头",
+    author: "北郊HH",
+    role: " friend from university",
+    company: "Wuhan University"
+  },
+  {
     quote: "EVER IN PERSUIT",
     author: "把你一郭端了",
     role: "friend from university",
