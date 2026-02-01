@@ -37,23 +37,23 @@ onMounted(() => {
 </script>
 
 <template>
-  <nav class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 py-6 pointer-events-none">
-    <div class="flex items-center gap-12 pointer-events-auto">
+  <nav class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 sm:px-6 md:px-8 py-4 md:py-6 pointer-events-none">
+    <div class="flex items-center gap-4 sm:gap-8 md:gap-12 pointer-events-auto">
       <!-- Title -->
       <h1 
-        class="text-xl font-bold tracking-[0.2em] text-black dark:text-white cursor-pointer select-none"
+        class="text-lg sm:text-xl font-bold tracking-[0.15em] sm:tracking-[0.2em] text-black dark:text-white cursor-pointer select-none"
         @click="scrollTo('about')"
       >
         GUANSHENGJU
       </h1>
 
       <!-- Navigation Links -->
-      <div class="flex items-center gap-8">
+      <div class="flex items-center gap-4 sm:gap-6 md:gap-8">
         <button
           v-for="item in navItems"
           :key="item.id"
           @click="scrollTo(item.id)"
-          class="group relative py-1 text-sm font-medium transition-colors duration-300"
+          class="group relative py-1 text-xs sm:text-sm font-medium transition-colors duration-300"
           :class="[
             activeSection === item.id 
               ? 'text-black dark:text-white' 
