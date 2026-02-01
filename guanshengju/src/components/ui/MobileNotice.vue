@@ -36,6 +36,9 @@ onUnmounted(() => {
           <p class="description">
             For the best experience, please visit on a desktop.
           </p>
+          <p class="network-hint" style="font-size: 0.85em; color: #888; margin-top: 5px;">
+            * Some assets may require a VPN to load correctly.
+          </p>
         </div>
       </div>
     </div>
