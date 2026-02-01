@@ -50,7 +50,7 @@ const icons = {
 </script>
 
 <template>
-  <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+  <div class="absolute inset-0 flex items-center justify-center pointer-events-none translate-y-4">
     
     <!-- 第一层：科技公司 -->
     <Orbit :radius="cardHalfWidth + orbitConfig.inner" :duration="10">

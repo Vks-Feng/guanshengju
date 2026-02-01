@@ -45,7 +45,7 @@ const links = computed(() => [
 </script>
 
 <template>
-  <div class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
+  <div class="relative">
     <!-- 这里的背景做了磨砂处理，即便在黑底下也能通过边框和微弱的反光看清 Dock 容器 -->
     <Dock 
       :magnification="60" 

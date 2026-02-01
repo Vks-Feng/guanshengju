@@ -8,8 +8,8 @@ import FlipWords from '../../components/ui/flip-words/FlipWords.vue';
 // 身份项数据
 const identities = [
   "Whuer",
-  "Alibaba Intern",
-  "AI SDE & Backend Developer",
+  "AI Software Engineer",
+  "Backend Developer",
   "Photography Enthusiast",
   "Calligraphy Lover"
 ];

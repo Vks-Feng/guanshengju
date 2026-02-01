@@ -5,20 +5,23 @@
     <!-- 1. 背景层 (Orbit) -->
     <OrbitBackground />
     
-    <!-- 顶部占位：为导航栏预留空间，并稍微减小以提升整体重心 -->
-    <div class="h-16 shrink-0"></div>
+    <!-- 顶部占位：适度调小高度，将内容整体上移 -->
+    <div class="h-20 shrink-0"></div>
 
     <!-- 2. 内容层 (3D Card) -->
-    <!-- 使用 mt-[8vh] 手动提升卡片位置，改善“重心偏下”的感觉 -->
-    <div class="relative z-10 pointer-events-auto mt-[8vh]">
-      <About3DCard />
-    </div>
+    <!-- 调整 mt 确保不被悬浮导航栏遮挡，并保持视觉平衡 -->
+    <div class="relative z-10 flex flex-col items-center pointer-events-none mt-[8vh]">
+      <div class="pointer-events-auto">
+        <About3DCard />
+      </div>
 
-    <!-- 3. LinkDock 组件 -->
-    <!-- 绝对定位在 100vh 容器的底部 -->
-    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-50 pointer-events-auto">
-      <LinkDock />
-    </div>    
+      <!-- 3. LinkDock 组件 -->
+      <!-- 使用负边距 (Negative Margin) 来抵消卡片组件自带的内边距 (p-10) -->
+      <!-- 这样可以实现视觉上的“贴合”效果，解决 mt-1 依然感觉远的问题 -->
+      <div class="-mt-6 pointer-events-auto pb-10">
+        <LinkDock />
+      </div>
+    </div>
   </section>
 </template>
 

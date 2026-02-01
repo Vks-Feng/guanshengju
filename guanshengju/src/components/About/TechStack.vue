@@ -42,8 +42,8 @@ const cards = [
   { name: "Docker", logo: dockerImg },
   { name: "Ubuntu", logo: ubuntuImg },
   // ai
-  { name: "ChatGPT", logo: chatgptImg },
   { name: "Gemini", logo: geminiImg },
+  { name: "ChatGPT", logo: chatgptImg },
   { name: "Claude", logo: claudeImg },
   { name: "Qwen", logo: qwenImg },
 ];
