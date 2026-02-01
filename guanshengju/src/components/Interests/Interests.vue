@@ -1,5 +1,5 @@
 <template>
-  <section id="interests" class="min-h-screen relative bg-gray-50 dark:bg-neutral-900 border-t border-gray-200 dark:border-neutral-800">
+  <section id="interests" class="min-h-screen relative border-t border-neutral-100 dark:border-neutral-800/50">
     <AnimatedSectionHeader
       bg-text="INTERESTS"
       title="My Interests"

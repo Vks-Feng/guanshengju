@@ -1,5 +1,5 @@
 <template>
-  <section id="share" class="min-h-screen relative bg-white dark:bg-black">
+  <section id="share" class="min-h-screen relative border-t border-neutral-100 dark:border-neutral-800/50">
     <AnimatedSectionHeader
       bg-text="SHARING"
       title="My Sharings"

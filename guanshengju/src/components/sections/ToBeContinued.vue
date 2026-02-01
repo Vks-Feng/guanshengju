@@ -1,5 +1,5 @@
 <template>
-  <section class="py-24 bg-white dark:bg-black border-t border-black/5 dark:border-white/5">
+  <section class="py-24 border-t border-neutral-100 dark:border-neutral-800/50">
     <div class="max-w-7xl mx-auto px-4 flex flex-col items-center justify-center text-center">
       <!-- 动画效果的文字 -->
       <div class="space-y-4">

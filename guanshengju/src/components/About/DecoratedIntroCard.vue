@@ -1,6 +1,6 @@
 <template>
   <!-- 主容器：严格限制为 100vh，防止内容溢出导致 LinkDock 被截断 -->
-  <section class="relative flex h-screen w-full flex-col items-center justify-start overflow-hidden bg-white dark:bg-black">
+  <section class="relative flex h-screen w-full flex-col items-center justify-start overflow-hidden">
     
     <!-- 1. 背景层 (Orbit) -->
     <OrbitBackground />
