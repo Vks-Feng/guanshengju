@@ -45,7 +45,7 @@ onMounted(() => {
 
 <template>
   <nav 
-    class="fixed top-6 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none"
+    class="sticky top-0 left-0 right-0 z-50 w-full flex justify-center px-4 pt-4 pb-1 pointer-events-none"
   >
     <div 
       class="flex items-center gap-4 sm:gap-8 md:gap-10 pointer-events-auto px-5 sm:px-8 py-2.5 rounded-full transition-all duration-500 border border-black/5 dark:border-white/5"

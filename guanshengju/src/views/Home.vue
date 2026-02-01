@@ -10,9 +10,9 @@ import MobileNotice from '../components/ui/MobileNotice.vue';
 
 <template>
   <div class="bg-white dark:bg-black min-h-screen text-black dark:text-white transition-colors duration-300">
+    <MobileNotice />
     <Navbar />
     <main>
-      <MobileNotice />
       <About />
       <Interests />
       <Share />
