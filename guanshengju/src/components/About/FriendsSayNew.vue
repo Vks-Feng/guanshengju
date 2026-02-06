@@ -52,6 +52,11 @@ const testimonials = [
     name: "pt座下大童子",
     designation: "friend from Alibaba @ University of Science and Technology of China"
   },
+    {
+    quote: "部署的8分钟是你玩手机最爽的1小时",
+    name: "pt座下叁童子",
+    designation: "friend from Alibaba @ University of Science and Technology of China"
+  },
   {
     quote: "很好吃，下次还来",
     name: "pt座下伍童子",
