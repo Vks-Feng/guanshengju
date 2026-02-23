@@ -3,6 +3,11 @@ import AnimatedTestimonialsText from '../ui/animated-testimonials/AnimatedTestim
 
 const testimonials = [
   {
+    quote: "思虚勿忘实，虑明勿失今",
+    name: "沃兹基硕德",
+    designation: "@ Myself"
+  },
+  {
     quote: "Would you rather live in peace as Mr. Nobody, or go down for all times？",
     name: "一只Only of Memories的耄",
     designation: "friend from high school @ Tsinghua University"
