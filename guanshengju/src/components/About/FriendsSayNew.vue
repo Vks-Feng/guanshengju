@@ -33,6 +33,11 @@ const testimonials = [
     designation: "friend from university @ Wuhan University"
   },
   {
+    quote: "设丈化直可拍",
+    name: "悦评姐",
+    designation: "friend from university @ Wuhan University"
+  },
+  {
     quote: "冯佬，别卷了😭",
     name: "luckz",
     designation: "friend from high school @ Tsinghua University"
