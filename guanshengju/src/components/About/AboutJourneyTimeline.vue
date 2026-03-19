@@ -34,12 +34,12 @@ const timeline = [
     entries: [
       {
         label: 'Academics',
-        text: 'Entered Wuhan University, School of Computer Science, majoring in Software Engineering.',
+        text: 'I entered the School of Computer Science at Wuhan University as a Software Engineering student.',
         icon: GraduationCap,
       },
       {
         label: 'Interests',
-        text: 'Fell in love with billiards.',
+        text: 'Billiards quietly became one of the things I loved most after class.',
         icon: Trophy,
       },
     ],
@@ -52,22 +52,22 @@ const timeline = [
     entries: [
       {
         label: 'Academics',
-        text: 'Strengthened computer science fundamentals.',
+        text: 'I spent a lot of time strengthening my computer science fundamentals.',
         icon: BookOpen,
       },
       {
         label: 'Career Direction',
-        text: 'Focused more seriously on backend development.',
+        text: 'Backend development became the direction I wanted to pursue more seriously.',
         icon: BriefcaseBusiness,
       },
       {
         label: 'Interests',
-        text: 'Fell in love with calligraphy.',
+        text: 'Calligraphy became a quiet and unexpectedly important part of my life.',
         icon: PenTool,
       },
       {
         label: 'Friendship',
-        text: 'Met many wonderful friends whose ideas deeply shaped my mind, worldview, and way of thinking.',
+        text: 'I met many wonderful friends in college, and their ideas deeply shaped my mind, worldview, and way of thinking.',
         icon: Trophy,
       },
     ],
@@ -80,22 +80,22 @@ const timeline = [
     entries: [
       {
         label: 'Career',
-        text: 'Started my first internship at Alibaba as an AI Application Engineer.',
+        text: 'I started my first internship at Alibaba as an AI Application Engineer.',
         icon: BriefcaseBusiness,
       },
       {
         label: 'Learning',
-        text: 'Began learning the AI Native knowledge stack required for the role, including agents, memory, and RAG.',
+        text: 'I started learning the AI-native engineering stack, covering areas like agents, memory, and RAG.',
         icon: BrainCircuit,
       },
       {
         label: 'Interests',
-        text: 'Fell in love with photography.',
+        text: 'Photography became a new way for me to observe light, space, and moments.',
         icon: Camera,
       },
       {
         label: 'Lifestyle',
-        text: 'Teammates from my internship encouraged me to step into the gym and start building a fitness habit.',
+        text: 'Teammates from my internship encouraged me into the gym, and I began building a real fitness habit.',
         icon: Trophy,
       },
     ],
@@ -108,22 +108,22 @@ const timeline = [
     entries: [
       {
         label: 'Offer',
-        text: 'Received an offer from ByteDance and will soon begin the internship.',
+        text: 'I have received an offer from ByteDance and will soon begin my next backend internship there.',
         icon: BriefcaseBusiness,
       },
       {
         label: 'Growth',
-        text: 'Hope to further improve backend engineering and AI Native capability.',
+        text: 'I hope to keep improving both my backend engineering ability and my AI Native capability.',
         icon: BrainCircuit,
       },
       {
         label: 'Goals',
-        text: 'Hope to get strong results in autumn recruitment.',
+        text: 'I hope to do well in autumn recruitment.',
         icon: BookOpen,
       },
       {
         label: 'Lifestyle',
-        text: 'Hope to build a healthier life with more reading, more training, and steadier interests.',
+        text: 'I hope to build a healthier year with more reading, more training, and steadier interests.',
         icon: Trophy,
       },
     ],
