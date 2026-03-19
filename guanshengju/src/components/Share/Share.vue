@@ -2,11 +2,12 @@
   <section id="share" class="min-h-screen relative border-t border-neutral-100 dark:border-neutral-800/50">
     <AnimatedSectionHeader
       bg-text="SHARING"
-      title="My Sharings"
-      subtitle="Some gems I found lately 📚🎬"
+      title="Things I Share"
+      subtitle="Worlds, stories, and screen-time favorites that stayed with me."
     />
 
-    <div ref="content" class="max-w-7xl mx-auto px-4 opacity-0 translate-y-20">
+    <div ref="content" class="max-w-7xl mx-auto px-4 pb-24 space-y-10 opacity-0 translate-y-20">
+      <PlayedGames />
       <!-- <Blogs />
       <Books /> -->
       <Videos />
@@ -21,6 +22,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import AnimatedSectionHeader from '../ui/AnimatedSectionHeader.vue';
 import Blogs from './Blogs.vue';
 import Books from './Books.vue';
+import PlayedGames from './PlayedGames.vue';
 import Videos from './Videos.vue';
 
 gsap.registerPlugin(ScrollTrigger);
