@@ -248,14 +248,17 @@ function updateActiveIndex() {
   activeIndex.value = closestIndex;
 }
 
-function scrollToIndex(index) {
+function scrollToIndex(index, behavior = 'smooth') {
+  const el = viewport.value;
   const target = slideRefs.value[index];
-  if (!target) return;
+  if (!el || !target) return;
 
-  target.scrollIntoView({
-    behavior: 'smooth',
-    inline: 'center',
-    block: 'nearest',
+  const targetLeft = target.offsetLeft - (el.clientWidth - target.offsetWidth) / 2;
+  const maxScrollLeft = Math.max(el.scrollWidth - el.clientWidth, 0);
+
+  el.scrollTo({
+    left: Math.min(Math.max(targetLeft, 0), maxScrollLeft),
+    behavior,
   });
 }
 
@@ -352,7 +355,7 @@ onMounted(() => {
     syncLayout();
     requestAnimationFrame(() => {
       updateActiveIndex();
-      scrollToIndex(0);
+      scrollToIndex(0, 'auto');
     });
   });
 });
