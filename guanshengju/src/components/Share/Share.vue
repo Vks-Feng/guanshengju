@@ -8,8 +8,7 @@
 
     <div ref="content" class="max-w-7xl mx-auto px-4 pb-24 space-y-10 opacity-0 translate-y-20">
       <PlayedGames />
-      <!-- <Blogs />
-      <Books /> -->
+      <Blogs />
       <Videos />
     </div>
   </section>
@@ -21,7 +20,6 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import AnimatedSectionHeader from '../ui/AnimatedSectionHeader.vue';
 import Blogs from './Blogs.vue';
-import Books from './Books.vue';
 import PlayedGames from './PlayedGames.vue';
 import Videos from './Videos.vue';
 

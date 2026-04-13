@@ -6,8 +6,10 @@ import DockSeparator from "@/components/ui/dock/DockSeparator.vue";
 import { Icon } from "@iconify/vue";
 import { useDark } from "@vueuse/core";
 import { computed } from "vue";
+import { useRouter } from "vue-router";
 
 const isDark = useDark();
+const router = useRouter();
 
 const links = computed(() => [
   { 
@@ -19,7 +21,7 @@ const links = computed(() => [
   { 
     name: "Blog", 
     icon: "mdi:rss", 
-    href: "https://www.cnblogs.com/vksfeng",
+    to: { name: "BlogIndex" },
     color: "#0088cc"
   },
   { 
@@ -42,6 +44,17 @@ const links = computed(() => [
     color: isDark.value ? "#ffffff" : "#000000"
   }
 ]);
+
+const openLink = (item) => {
+  if (item.to) {
+    router.push(item.to);
+    return;
+  }
+
+  if (item.href) {
+    window.open(item.href, "_blank", "noopener,noreferrer");
+  }
+};
 </script>
 
 <template>
@@ -62,9 +75,9 @@ const links = computed(() => [
             {{ item.name }}
           </div>
           
-          <a 
-            :href="item.href" 
-            target="_blank" 
+          <button
+            type="button"
+            @click="openLink(item)"
             class="flex items-center justify-center w-full h-full p-2"
           >
             <!-- 关键点：使用 style 直接绑定颜色，移除所有 hover:text 类 -->
@@ -73,7 +86,7 @@ const links = computed(() => [
               :style="{ color: item.color }" 
               class="w-full h-full transition-transform duration-300" 
             />
-          </a>
+          </button>
         </DockIcon>
       </template>
     </Dock>
