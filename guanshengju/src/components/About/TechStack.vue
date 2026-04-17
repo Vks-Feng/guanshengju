@@ -24,6 +24,7 @@ import chatgptImg from "@/assets/tech-stack/ai/ChatGPT_logo.png";
 import geminiImg from "@/assets/tech-stack/ai/Google-Gemini-Symbol.png";
 import claudeImg from "@/assets/tech-stack/ai/claude.png";
 import qwenImg from "@/assets/tech-stack/ai/Qwen.png";
+import traeImg from "@/assets/tech-stack/ai/trae.png";
 
 const cards = [
   // language
@@ -42,10 +43,10 @@ const cards = [
   { name: "Docker", logo: dockerImg },
   { name: "Ubuntu", logo: ubuntuImg },
   // ai
-  { name: "Gemini", logo: geminiImg },
-  { name: "ChatGPT", logo: chatgptImg },
   { name: "Claude", logo: claudeImg },
-  { name: "Qwen", logo: qwenImg },
+  { name: "ChatGPT", logo: chatgptImg },
+  { name: "Gemini", logo: geminiImg },
+  { name: "Trae", logo: traeImg },
 ];
 </script>
 

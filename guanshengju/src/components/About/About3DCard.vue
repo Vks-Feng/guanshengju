@@ -6,7 +6,7 @@ import CardItem from '../../components/ui/card-3d/CardItem.vue';
 import FlipWords from '../../components/ui/flip-words/FlipWords.vue';
 
 const identities = [
-  'Whuer',
+  'WHUer',
   'AI Native Engineer',
   'Backend Developer',
   'Photography Enthusiast',

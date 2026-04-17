@@ -8,7 +8,7 @@
 
     <div ref="content" class="max-w-7xl mx-auto px-4 pb-24 space-y-10 opacity-0 translate-y-20">
       <PlayedGames />
-      <Blogs />
+      <!-- <Blogs /> -->
       <Videos />
     </div>
   </section>
