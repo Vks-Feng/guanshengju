@@ -24,7 +24,7 @@ import chatgptImg from "@/assets/tech-stack/ai/ChatGPT_logo.png";
 import geminiImg from "@/assets/tech-stack/ai/Google-Gemini-Symbol.png";
 import claudeImg from "@/assets/tech-stack/ai/claude.png";
 import qwenImg from "@/assets/tech-stack/ai/Qwen.png";
-import traeImg from "@/assets/tech-stack/ai/trae.png";
+import traeImg from "@/assets/tech-stack/ai/Trae.png";
 
 const cards = [
   // language
