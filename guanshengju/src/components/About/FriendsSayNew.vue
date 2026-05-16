@@ -53,6 +53,11 @@ const testimonials = [
     designation: "friend from high school @ Huazhong University of Science and Technology"
   },
   {
+    quote: "出收集者的飞机场艾希",
+    name: "rabbit 5",
+    designation: "friend from high school @ Sichuan University"
+  },
+  {
     quote: "收一下，要不看起来像吹牛",
     name: "pt老师",
     designation: "quote from Alibaba mentor @ Alibaba"
