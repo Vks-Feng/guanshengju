@@ -6,10 +6,8 @@ import DockSeparator from "@/components/ui/dock/DockSeparator.vue";
 import { Icon } from "@iconify/vue";
 import { useDark } from "@vueuse/core";
 import { computed } from "vue";
-import { useRouter } from "vue-router";
 
 const isDark = useDark();
-const router = useRouter();
 
 const links = computed(() => [
   { 
@@ -21,7 +19,7 @@ const links = computed(() => [
   { 
     name: "Blog", 
     icon: "mdi:rss", 
-    to: { name: "BlogIndex" },
+    href: "https://www.cnblogs.com/vksfeng",
     color: "#0088cc"
   },
   { 
@@ -46,11 +44,6 @@ const links = computed(() => [
 ]);
 
 const openLink = (item) => {
-  if (item.to) {
-    router.push(item.to);
-    return;
-  }
-
   if (item.href) {
     window.open(item.href, "_blank", "noopener,noreferrer");
   }
