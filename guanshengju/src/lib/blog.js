@@ -216,6 +216,7 @@ function parsePost(filePath, rawSource) {
     summary: String(data.summary),
     tags: Array.isArray(data.tags) ? data.tags.map((tag) => String(tag)) : [],
     cover: data.cover ? resolveAssetUrl(String(data.cover)) : '',
+    source: data.source ? resolveAssetUrl(String(data.source)) : '',
     readingMinutes: estimateReadingMinutes(content),
     html: markdown.render(content.trim())
   };
