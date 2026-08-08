@@ -1,4 +1,5 @@
 import MarkdownIt from 'markdown-it';
+import markdownItKatex from 'markdown-it-katex';
 
 const markdownFiles = import.meta.glob('../content/blog/*.md', {
   query: '?raw',
@@ -27,6 +28,66 @@ const markdown = new MarkdownIt({
   linkify: true,
   typographer: true
 });
+
+markdown.use(markdownItKatex, {
+  throwOnError: false,
+  errorColor: '#b91c1c'
+});
+
+function createHeadingId(text, usedIds) {
+  const normalized = text
+    .trim()
+    .toLowerCase()
+    .replace(/[`~!@#$%^&*()+=\[\]{}\\|;:'",.<>/?，。、《》？；：“”‘’！（）【】]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/^-|-$/g, '');
+  const baseId = normalized || 'section';
+  const count = usedIds.get(baseId) || 0;
+
+  usedIds.set(baseId, count + 1);
+
+  return count === 0 ? baseId : `${baseId}-${count + 1}`;
+}
+
+const defaultHeadingOpen =
+  markdown.renderer.rules.heading_open ||
+  ((tokens, idx, options, env, self) => self.renderToken(tokens, idx, options));
+
+markdown.renderer.rules.heading_open = (tokens, idx, options, env, self) => {
+  const level = Number(tokens[idx].tag.replace('h', ''));
+  const text = tokens[idx + 1]?.content || '';
+  const usedIds = env.headingIds || new Map();
+  const id = createHeadingId(text, usedIds);
+
+  env.headingIds = usedIds;
+  tokens[idx].attrSet('id', id);
+
+  if (level >= 1 && level <= 3) {
+    env.toc = env.toc || [];
+    env.toc.push({
+      id,
+      level,
+      title: text
+    });
+  }
+
+  return defaultHeadingOpen(tokens, idx, options, env, self);
+};
+
+const defaultFence =
+  markdown.renderer.rules.fence ||
+  ((tokens, idx, options, env, self) => self.renderToken(tokens, idx, options));
+
+markdown.renderer.rules.fence = (tokens, idx, options, env, self) => {
+  const info = tokens[idx].info ? tokens[idx].info.trim().split(/\s+/)[0] : '';
+
+  if (info === 'mermaid') {
+    return `<div class="mermaid">${markdown.utils.escapeHtml(tokens[idx].content)}</div>`;
+  }
+
+  return defaultFence(tokens, idx, options, env, self);
+};
 
 const defaultLinkOpen =
   markdown.renderer.rules.link_open ||
@@ -75,6 +136,28 @@ function estimateReadingMinutes(markdownSource) {
   const totalUnits = cjkCharacters + latinWords;
 
   return Math.max(1, Math.round(totalUnits / 220));
+}
+
+function normalizeMathDelimiters(markdownSource) {
+  const lines = markdownSource.split(/\r?\n/);
+  let inFence = false;
+
+  return lines
+    .map((line) => {
+      if (/^\s*```/.test(line)) {
+        inFence = !inFence;
+        return line;
+      }
+
+      if (inFence) {
+        return line;
+      }
+
+      return line
+        .replace(/\\\[(.+?)\\\]/g, (_, formula) => `$$${formula}$$`)
+        .replace(/\\\((.+?)\\\)/g, (_, formula) => `$${formula}$`);
+    })
+    .join('\n');
 }
 
 function normalizeDateInput(value) {
@@ -209,6 +292,13 @@ function parsePost(filePath, rawSource) {
     return null;
   }
 
+  const renderContent = normalizeMathDelimiters(content.trim());
+  const renderEnv = {
+    headingIds: new Map(),
+    toc: []
+  };
+  const html = markdown.render(renderContent, renderEnv);
+
   return {
     slug,
     title: String(data.title),
@@ -218,7 +308,8 @@ function parsePost(filePath, rawSource) {
     cover: data.cover ? resolveAssetUrl(String(data.cover)) : '',
     source: data.source ? resolveAssetUrl(String(data.source)) : '',
     readingMinutes: estimateReadingMinutes(content),
-    html: markdown.render(content.trim())
+    toc: renderEnv.toc,
+    html
   };
 }
 
